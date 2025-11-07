@@ -5,18 +5,40 @@ export default function FeatureCarousel({features = []}){
   const count = 7
   const len = Math.max(1, Math.min(count, features.length || count))
   const [active, setActive] = useState(3)
+  const [animating, setAnimating] = useState(null) // { dir: 'next'|'prev', index }
   const rootRef = useRef(null)
+  const animTimer = useRef(null)
+  const ANIM_DUR = 700
 
   useEffect(()=>{
     // keep active in bounds if features length changes
     if(active >= len) setActive(Math.max(0, len-1))
   }, [len])
 
+  // cleanup animation timer on unmount
+  useEffect(()=>{
+    return ()=>{
+      if(animTimer.current) clearTimeout(animTimer.current)
+    }
+  }, [])
+
   function prev(){
-    setActive(a => (a - 1 + len) % len)
+    if(animating) return
+    const outgoing = active
+    setAnimating({dir: 'prev', index: outgoing})
+    animTimer.current = setTimeout(()=>{
+      setActive(a => (a - 1 + len) % len)
+      setAnimating(null)
+    }, ANIM_DUR)
   }
   function next(){
-    setActive(a => (a + 1) % len)
+    if(animating) return
+    const outgoing = active
+    setAnimating({dir: 'next', index: outgoing})
+    animTimer.current = setTimeout(()=>{
+      setActive(a => (a + 1) % len)
+      setAnimating(null)
+    }, ANIM_DUR)
   }
 
   function handleKey(e){
@@ -32,11 +54,11 @@ export default function FeatureCarousel({features = []}){
     return (
       <article
         key={i}
-        className={`fc-card ${isCenter ? 'center' : ''}`}
+        className={`fc-card ${isCenter ? 'center' : ''} ${animating && animating.index === i ? `orbit-out ${animating.dir}` : ''}`}
         style={{ ['--offset']: offset, ['--abs']: absOffset }}
         tabIndex={0}
         aria-label={`${f.title}: ${f.desc}`}
-        onClick={()=> setActive(i)}
+        onClick={()=> { if(!animating) setActive(i) }}
       >
         <div className="fc-thumb" aria-hidden></div>
         <div className="fc-body">
@@ -57,3 +79,7 @@ export default function FeatureCarousel({features = []}){
     </div>
   )
 }
+
+// cleanup timer if component unmounts mid-animation
+// (added at file bottom to keep component body tidy)
+
