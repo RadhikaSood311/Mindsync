@@ -4,6 +4,7 @@ import ModelViewer from '../components/ModelViewer'
 import FeatureCarousel from '../components/FeatureCarousel'
 import { useState, useEffect } from 'react'
 import HowItWorks from '../components/HowItWorks'
+import HeroCTA from '../components/HeroCTA'
 
 const FEATURES = [
   {title: 'Instant Summaries', desc: 'Auto-generated concise summaries for any YouTube video—get the key points in seconds.'},
@@ -19,6 +20,15 @@ export default function Home(){
     <main className="home-root">
       {/* Hero: keeps previous styling that depended on .home-page */}
       <section id="hero" className="home-page">
+        {/* animated background particles and gradient overlays */}
+        <div className="hero-bg">
+          <div className="mesh" />
+          <span className="bg-particle p1" />
+          <span className="bg-particle p2" />
+          <span className="bg-particle p3" />
+          <span className="bg-particle p4" />
+          <span className="bg-particle p5" />
+        </div>
         <div className="hero hero-grid">
           <div className="hero-content">
             <h1 className="hero-title">
@@ -64,13 +74,8 @@ export default function Home(){
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contact" className="section section-contact">
-        <div className="section-inner">
-          <h2 className="section-title">Contact</h2>
-          <p className="section-sub muted">Questions or feedback? Reach out and we’ll respond soon.</p>
-        </div>
-      </section>
+      {/* CTA: Unlock your full potential (above footer) */}
+      <HeroCTA />
     </main>
   )
 }

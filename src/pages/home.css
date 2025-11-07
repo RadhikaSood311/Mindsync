@@ -5,6 +5,7 @@
 .home-page{
   /* hero height equals viewport minus navbar height so combined fits exactly */
   height: calc(100vh - var(--nav-height));
+  position:relative;
   display:flex;
   align-items:center;
   justify-content:flex-start;
@@ -15,10 +16,55 @@
   overflow: visible; /* allow 3D model to overlap text */
 }
 
+/* hero moving gradient & subtle particles */
+.home-page::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  /* stronger moving gradient for clearer color motion */
+  background: radial-gradient(800px 300px at 10% 20%, rgba(80,120,200,0.06), transparent), radial-gradient(900px 320px at 85% 75%, rgba(72,200,147,0.06), transparent);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  animation: hero-hue 12s linear infinite;
+}
+
+.hero-bg{ position:absolute; inset:0; z-index:1; pointer-events:none; overflow:hidden }
+.bg-particle{ position:absolute; border-radius:50%; filter:blur(18px); opacity:0.22; transform: translate3d(0,0,0); pointer-events:none }
+.bg-particle.p1{ width:640px; height:640px; left:2%; top:36%; background: radial-gradient(circle at 30% 30%, rgba(72,200,147,0.36), transparent 40%); animation: floaty 10s ease-in-out infinite }
+.bg-particle.p2{ width:520px; height:520px; right:4%; top:22%; background: radial-gradient(circle at 30% 30%, rgba(102,184,255,0.34), transparent 40%); animation: floaty 13s ease-in-out infinite; animation-delay:1s }
+.bg-particle.p3{ width:420px; height:420px; left:10%; top:4%; background: radial-gradient(circle at 20% 30%, rgba(160,120,220,0.30), transparent 40%); animation: floaty 11s ease-in-out infinite; animation-delay:0.5s }
+.bg-particle.p4{ width:320px; height:320px; right:18%; bottom:6%; background: radial-gradient(circle at 30% 30%, rgba(3,200,180,0.28), transparent 40%); animation: floaty 12s ease-in-out infinite; animation-delay:0.7s }
+.bg-particle.p5{ width:220px; height:220px; left:54%; top:62%; background: radial-gradient(circle at 30% 30%, rgba(255,200,160,0.28), transparent 40%); animation: floaty 9s ease-in-out infinite; animation-delay:2s }
+
+@keyframes floaty{
+  0%{ transform: translate3d(0,0,0) scale(1) }
+  25%{ transform: translate3d(18px,-12px,0) scale(1.04) }
+  50%{ transform: translate3d(0,18px,0) scale(0.98) }
+  75%{ transform: translate3d(-12px,-6px,0) scale(1.02) }
+  100%{ transform: translate3d(0,0,0) scale(1) }
+}
+
+@keyframes hero-hue{ 0%{ filter: hue-rotate(0deg) } 50%{ filter: hue-rotate(24deg) } 100%{ filter: hue-rotate(0deg) } }
+
+/* additional subtle sliding mesh to make motion very visible */
+.home-page .mesh {
+  position:absolute; inset:0; z-index:0; pointer-events:none; background-image:linear-gradient(120deg, rgba(12,24,40,0.06) 0%, rgba(8,12,20,0.02) 30%, rgba(12,10,24,0.06) 70%); mix-blend-mode:overlay; opacity:0.7; transform: translateX(-8%); animation: mesh-slide 18s linear infinite;
+}
+@keyframes mesh-slide{ 0%{ transform: translateX(-8%) } 50%{ transform: translateX(8%) } 100%{ transform: translateX(-8%) } }
+
+/* subtle diagonal streaks for extra depth */
+.home-page::after{
+  content:''; position:absolute; inset:0; z-index:0; pointer-events:none; background-image:repeating-linear-gradient(135deg, rgba(255,255,255,0.01) 0 2px, transparent 2px 40px); mix-blend-mode: overlay; opacity:0.8; animation: streaks 10s linear infinite;
+}
+@keyframes streaks{ 0%{ background-position:0 0 } 100%{ background-position:400px 400px } }
+
 .hero{
   max-width:var(--hero-max);
   color:var(--text);
   padding:2rem 1rem;
+  position:relative;
+  z-index:2;
 }
 
 .hero-grid{
@@ -65,6 +111,10 @@
 
 .hero-media{display:flex;align-items:center;justify-content:flex-end}
 .hero-media img{max-width:760px;width:100%;height:auto;border-radius:18px;box-shadow:0 40px 80px rgba(6,12,18,0.6);transform:translateX(8%)}
+
+/* subtle floating for the 3D model area */
+.hero-media > *{ animation: float-model 6.5s ease-in-out infinite; transform-origin:50% 50% }
+@keyframes float-model{ 0%{ transform: translateY(0) } 50%{ transform: translateY(-12px) } 100%{ transform: translateY(0) } }
 
 /* push text pretty far left like the reference */
 .hero-content{padding-left:clamp(48px,6vw,120px);padding-right:2rem}
