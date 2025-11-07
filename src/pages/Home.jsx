@@ -3,6 +3,7 @@ import './home.css'
 import ModelViewer from '../components/ModelViewer'
 import FeatureCarousel from '../components/FeatureCarousel'
 import { useState, useEffect } from 'react'
+import HowItWorks from '../components/HowItWorks'
 
 const FEATURES = [
   {title: 'Instant Summaries', desc: 'Auto-generated concise summaries for any YouTube video—get the key points in seconds.'},
@@ -53,17 +54,7 @@ export default function Home(){
       </section>
 
       {/* How it works */}
-      <section id="how" className="section section-how">
-        <div className="section-inner">
-          <h2 className="section-title">How it works</h2>
-          <p className="section-sub muted">Three simple steps to get started</p>
-          <ol className="how-steps">
-            <li>Paste a YouTube link or search for a video</li>
-            <li>Generate summaries, flashcards, and notes</li>
-            <li>Study with focus tools and track progress</li>
-          </ol>
-        </div>
-      </section>
+      <HowItWorks />
 
       {/* About */}
       <section id="about" className="section section-about">
