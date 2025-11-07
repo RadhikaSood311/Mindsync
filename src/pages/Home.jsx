@@ -1,6 +1,7 @@
 import '../App.css'
 import './home.css'
 import ModelViewer from '../components/ModelViewer'
+import FeatureCarousel from '../components/FeatureCarousel'
 import { useState, useEffect } from 'react'
 
 const FEATURES = [
@@ -47,15 +48,7 @@ export default function Home(){
         <div className="section-inner">
           <h2 className="section-title">Features</h2>
           <p className="section-sub muted">Core capabilities to turn passive watching into active learning.</p>
-          <div className="features-grid">
-            {FEATURES.map((f, i) => (
-              <article className="feature-card" key={i}>
-                <div className="feature-icon" aria-hidden>{String.fromCharCode(0x1F4A1 + (i % 10))}</div>
-                <h3 className="feature-title">{f.title}</h3>
-                <p className="feature-desc">{f.desc}</p>
-              </article>
-            ))}
-          </div>
+          <FeatureCarousel features={FEATURES} />
         </div>
       </section>
 
