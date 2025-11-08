@@ -8,12 +8,48 @@ import HowItWorks from '../components/HowItWorks'
 import HeroCTA from '../components/HeroCTA'
 
 const FEATURES = [
-  {title: 'Instant Summaries', desc: 'Auto-generated concise summaries for any YouTube video—get the key points in seconds.'},
-  {title: 'Smart Flashcards', desc: 'One-click flashcard creation from transcripts to speed up active recall.'},
-  {title: 'Focused Study Mode', desc: 'Distraction-free mode with built-in timers and study sessions.'},
-  {title: 'Progress Tracking', desc: 'Track mastery across videos and topics with visual progress charts.'},
-  {title: 'Topic Search', desc: 'Search across your saved videos and notes to quickly find what matters.'},
-  {title: 'Multi-language Support', desc: 'Works with transcripts and captions in many languages.'}
+  {
+    title: 'AI Video Summarizer',
+    tagline: 'Understand any video in minutes.',
+    desc: 'MindSync\'s multi-layer AI summarizer gives you 30-second TL;DRs, 2-minute insights, and 5-minute detailed breakdowns with timestamps and diagrams. Perfect for quick revision or deep understanding.',
+    image: '/src/assets/Aivideosumarizer.png'
+  },
+  {
+    title: 'Auto Flashcard Generator',
+    tagline: 'Turn every topic into quick quizzes.',
+    desc: 'Instantly create flashcards and short quizzes from any YouTube or EdTech video. Export to Notion, Anki, or Quizlet for smart revision anywhere.',
+    image: '/src/assets/autoflashcard.png'
+  },
+  {
+    title: 'Smart Notes Builder',
+    tagline: 'From messy notes to clean knowledge.',
+    desc: 'AI turns your raw text or video notes into structured, readable formats — summaries, blogs, or cheat sheets — ready for revision or sharing.',
+    image: '/src/assets/smartnotesbuilder.png'
+  },
+  {
+    title: 'Focus Mode',
+    tagline: 'Study distraction-free.',
+    desc: 'Combine Pomodoro timer, AI focus detection, and ambient background music to help you maintain deep focus while studying.',
+    image: '/src/assets/focusmode.png'
+  },
+  {
+    title: 'Learning Analytics Dashboard',
+    tagline: 'Track your learning, not just your time.',
+    desc: 'Visualize your study progress with time charts, focus sessions, and streak tracking. Know what topics you\'ve mastered and where to improve.',
+    image: '/src/assets/learningdashboard.png'
+  },
+  {
+    title: 'Mind Map Generator',
+    tagline: 'See your concepts, visually.',
+    desc: 'Transform video content or notes into interactive mind maps that connect ideas and make complex topics easier to understand.',
+    image: '/src/assets/mindmap.png'
+  },
+  {
+    title: 'Gamified Learning',
+    tagline: 'Make learning addictive (in a good way).',
+    desc: 'Earn XP, maintain streaks, and unlock badges as you study. Compete with friends or challenge yourself to stay consistent.',
+    image: '/src/assets/gamifiedlearning.png'
+  }
 ]
 
 export default function Home(){

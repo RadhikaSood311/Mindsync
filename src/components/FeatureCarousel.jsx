@@ -47,7 +47,12 @@ export default function FeatureCarousel({features = []}){
   }
 
   const cards = Array.from({length:count}).map((_,i)=>{
-    const f = features[i] || {title:`Feature ${i+1}`, desc: 'Short description.'}
+    const f = features[i] || {
+      title: `Feature ${i+1}`,
+      desc: 'Short description.',
+      image: null,
+      tagline: 'Feature tagline'
+    }
     const offset = i - active
     const absOffset = Math.abs(offset)
     const isCenter = offset === 0
@@ -60,9 +65,12 @@ export default function FeatureCarousel({features = []}){
         aria-label={`${f.title}: ${f.desc}`}
         onClick={()=> { if(!animating) setActive(i) }}
       >
-        <div className="fc-thumb" aria-hidden></div>
+        <div className="fc-thumb" aria-hidden>
+          {f.image && <img src={f.image} alt="" className="feature-image" />}
+        </div>
         <div className="fc-body">
           <h3 className="fc-title">{f.title}</h3>
+          <p className="fc-tagline">{f.tagline}</p>
           <p className="fc-desc">{f.desc}</p>
         </div>
       </article>

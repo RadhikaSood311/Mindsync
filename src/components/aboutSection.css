@@ -110,11 +110,32 @@
 
 .about-features {
   display: grid;
-  grid-template-columns: repeat(3, minmax(180px, 220px));
-  gap: 3.5rem;
-  margin-top: 3rem;
+  grid-template-columns: repeat(3, minmax(160px, 200px));
+  gap: clamp(1rem, 3vw, 3.5rem);
+  margin-top: var(--space-xl);
   position: relative;
   justify-content: start;
+}
+
+@media (max-width: 1024px) {
+  .about-features {
+    grid-template-columns: repeat(3, minmax(140px, 180px));
+    gap: var(--space-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-features {
+    grid-template-columns: repeat(2, minmax(140px, 180px));
+    justify-content: center;
+    gap: var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .about-features {
+    grid-template-columns: minmax(140px, 200px);
+  }
 }
 
 /* Horizontal connecting lines */
