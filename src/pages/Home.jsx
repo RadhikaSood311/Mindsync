@@ -158,10 +158,13 @@ export default function Home(){
             </div>
           </div>
           <div className="about-robot">
-            <img 
-              src="/src/assets/robo.png" 
-              alt="Mindsync AI Assistant" 
-              className="robot-image"
+            <video 
+              src="/src/assets/robo.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="robot-video"
               data-aos="fade-left"
               data-aos-duration="1000"
             />
@@ -173,8 +176,6 @@ export default function Home(){
               <span className="glow-dot" style={{top: '15%', right: '25%'}}></span>
               <span className="glow-dot" style={{bottom: '25%', right: '10%'}}></span>
             </div>
-            {/* Glowing circle background */}
-            <div className="robot-glow"></div>
           </div>
         </div>
       </section>

@@ -54,7 +54,7 @@ export default function Navbar() {
           <li><Link className="active" to="/">Home</Link></li>
           <li><Link to="/study">Study Mode</Link></li>
           <li><Link to="/pricing">Pricing</Link></li>
-          <li><Link to="/about">About</Link></li>
+          <li><Link to="/about">Community</Link></li>
           <li><Link to="/contact">Contact</Link></li>
         </ul>
 
