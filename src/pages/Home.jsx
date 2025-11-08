@@ -1,5 +1,6 @@
 import '../App.css'
 import './home.css'
+import '../components/aboutSection.css'
 import ModelViewer from '../components/ModelViewer'
 import FeatureCarousel from '../components/FeatureCarousel'
 import { useState, useEffect } from 'react'
@@ -68,9 +69,77 @@ export default function Home(){
 
       {/* About */}
       <section id="about" className="section section-about">
-        <div className="section-inner">
-          <h2 className="section-title">About Mindsync</h2>
-          <p className="section-sub muted">Built to help learners convert video content into retained knowledge.</p>
+        {/* Animated background particles */}
+        <div className="bg-particles">
+          <span className="particle p1"></span>
+          <span className="particle p2"></span>
+          <span className="particle p3"></span>
+          <span className="particle p4"></span>
+          <span className="particle p5"></span>
+          <span className="particle p6"></span>
+        </div>
+        <div className="about-container">
+          <div className="about-content">
+            <h2 className="about-title">About Mindsync</h2>
+            <h3 className="about-subtitle">Empowering Learning, One Video At A Time.</h3>
+            <p className="about-description">
+              Founded with the vision of transforming passive video consumption into active, effective learning.
+              MindSync leverages cutting-edge AI to unlock knowledge hidden within educational content.
+              We believe everyone deserves to learn smarter, retain more, and achieve academic and professional goals.
+              Join us on our journey to revolutionize self-study.
+            </p>
+            <div className="about-features">
+              <div className="feature-item" data-aos="fade-up" data-aos-delay="100">
+                <div className="feature-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M12 4C14 4 16.5 5 16.5 9C16.5 11 15 12 14 12.5C13 13 12 13 12 13C12 13 11 13 10 12.5C9 12 7.5 11 7.5 9C7.5 5 10 4 12 4Z" />
+                    <path d="M12 4C7 4 3 7.5 3 12.5C3 17.5 7 21 12 21C17 21 21 17.5 21 12.5C21 7.5 17 4 12 4Z" />
+                    <path d="M16 16C16 16 14.5 18 12 18C9.5 18 8 16 8 16" />
+                  </svg>
+                </div>
+                <h4 className="feature-title">AI-Powered Understanding</h4>
+              </div>
+              <div className="feature-item" data-aos="fade-up" data-aos-delay="200">
+                <div className="feature-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M12 3L4 7V17L12 21L20 17V7L12 3Z" />
+                    <path d="M12 12L20 8" />
+                    <path d="M12 12L12 21" />
+                    <path d="M12 12L4 8" />
+                  </svg>
+                </div>
+                <h4 className="feature-title">Unlock Knowledge Potential</h4>
+              </div>
+              <div className="feature-item" data-aos="fade-up" data-aos-delay="300">
+                <div className="feature-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" />
+                    <path d="M19 15C19.6 15 20.0902 14.5361 20.0902 13.9111C20.0902 13.2861 19.6 12.8222 19 12.8222H17.5C17.6162 12.5278 17.693 12.2148 17.7246 11.8889H19C19.6 11.8889 20.0902 11.425 20.0902 10.8C20.0902 10.175 19.6 9.71111 19 9.71111H17.7246C17.693 9.38519 17.6162 9.07222 17.5 8.77778H19C19.6 8.77778 20.0902 8.31389 20.0902 7.68889C20.0902 7.06389 19.6 6.6 19 6.6H17.5C16.2972 4.99907 14.2764 4 12 4C9.72361 4 7.70278 4.99907 6.5 6.6H5C4.4 6.6 3.90984 7.06389 3.90984 7.68889C3.90984 8.31389 4.4 8.77778 5 8.77778H6.5C6.38376 9.07222 6.307 9.38519 6.27541 9.71111H5C4.4 9.71111 3.90984 10.175 3.90984 10.8C3.90984 11.425 4.4 11.8889 5 11.8889H6.27541C6.307 12.2148 6.38376 12.5278 6.5 12.8222H5C4.4 12.8222 3.90984 13.2861 3.90984 13.9111C3.90984 14.5361 4.4 15 5 15H6.5C7.70278 16.6009 9.72361 17.6 12 17.6C14.2764 17.6 16.2972 16.6009 17.5 15H19Z" />
+                  </svg>
+                </div>
+                <h4 className="feature-title">Achieve Your Goals</h4>
+              </div>
+            </div>
+          </div>
+          <div className="about-robot">
+            <img 
+              src="/src/assets/robo.png" 
+              alt="Mindsync AI Assistant" 
+              className="robot-image"
+              data-aos="fade-left"
+              data-aos-duration="1000"
+            />
+            {/* Glowing dots animation */}
+            <div className="glow-dots">
+              <span className="glow-dot" style={{top: '20%', left: '10%'}}></span>
+              <span className="glow-dot" style={{top: '40%', right: '15%'}}></span>
+              <span className="glow-dot" style={{bottom: '30%', left: '20%'}}></span>
+              <span className="glow-dot" style={{top: '15%', right: '25%'}}></span>
+              <span className="glow-dot" style={{bottom: '25%', right: '10%'}}></span>
+            </div>
+            {/* Glowing circle background */}
+            <div className="robot-glow"></div>
+          </div>
         </div>
       </section>
 
