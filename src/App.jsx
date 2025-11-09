@@ -1,14 +1,22 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
+import Auth from './pages/Auth'
 import Footer from './components/Footer'
 import NotFound from './pages/NotFound'
 import './App.css'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { useEffect } from 'react'
+import Pricing from './pages/Pricing';
+import Contact from './pages/Contact';
+import StudyMode from './pages/StudyMode';
 
-function App() {
+function AppContent() {
+  const location = useLocation()
+  const isAuthPage = ['/login', '/signup'].includes(location.pathname)
+  const isStudyMode = location.pathname === '/study'
+
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -18,19 +26,27 @@ function App() {
   }, []);
 
   return (
+    <div>
+      {!isAuthPage && !isStudyMode && <Navbar />}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Auth />} />
+        <Route path="/signup" element={<Auth />} />
+        <Route path="/study" element={<StudyMode />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/about" element={<NotFound />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      {!isAuthPage && !isStudyMode && <Footer />}
+    </div>
+  )
+}
+
+function App() {
+  return (
     <BrowserRouter>
-      <div>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/study" element={<NotFound />} />
-          <Route path="/pricing" element={<NotFound />} />
-          <Route path="/about" element={<NotFound />} />
-          <Route path="/contact" element={<NotFound />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Footer />
-      </div>
+      <AppContent />
     </BrowserRouter>
   )
 }

@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom'
-import ThemeToggle from './ThemeToggle'
+import { Link, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import './navbar.css'
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const location = useLocation()
 
   // Handle scroll
   useEffect(() => {
@@ -51,15 +51,49 @@ export default function Navbar() {
         </div>
 
         <ul className="nav-links">
-          <li><Link className="active" to="/">Home</Link></li>
-          <li><Link to="/study">Study Mode</Link></li>
-          <li><Link to="/pricing">Pricing</Link></li>
-          <li><Link to="/about">Community</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
+          <li>
+            <Link 
+              className={location.pathname === '/' ? 'active' : ''} 
+              to="/"
+            >
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link 
+              className={location.pathname === '/study' ? 'active' : ''} 
+              to="/study"
+            >
+              Study Mode
+            </Link>
+          </li>
+          <li>
+            <Link 
+              className={location.pathname === '/pricing' ? 'active' : ''} 
+              to="/pricing"
+            >
+              Pricing
+            </Link>
+          </li>
+          <li>
+            <Link 
+              className={location.pathname === '/about' ? 'active' : ''} 
+              to="/about"
+            >
+              Community
+            </Link>
+          </li>
+          <li>
+            <Link 
+              className={location.pathname === '/contact' ? 'active' : ''} 
+              to="/contact"
+            >
+              Contact
+            </Link>
+          </li>
         </ul>
 
         <div className="nav-actions">
-          <ThemeToggle />
           <Link className="login" to="/login">Login</Link>
           <Link className="cta" to="/study">Start Free</Link>
         </div>
@@ -84,14 +118,54 @@ export default function Navbar() {
       {/* Mobile Navigation */}
       <div className={`mobile-nav ${isMenuOpen ? 'active' : ''}`}>
         <ul className="nav-links">
-          <li><Link onClick={() => setIsMenuOpen(false)} className="active" to="/">Home</Link></li>
-          <li><Link onClick={() => setIsMenuOpen(false)} to="/study">Study Mode</Link></li>
-          <li><Link onClick={() => setIsMenuOpen(false)} to="/pricing">Pricing</Link></li>
-          <li><Link onClick={() => setIsMenuOpen(false)} to="/about">About</Link></li>
-          <li><Link onClick={() => setIsMenuOpen(false)} to="/contact">Contact</Link></li>
+          <li>
+            <Link 
+              onClick={() => setIsMenuOpen(false)} 
+              className={location.pathname === '/' ? 'active' : ''} 
+              to="/"
+            >
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link 
+              onClick={() => setIsMenuOpen(false)} 
+              className={location.pathname === '/study' ? 'active' : ''} 
+              to="/study"
+            >
+              Study Mode
+            </Link>
+          </li>
+          <li>
+            <Link 
+              onClick={() => setIsMenuOpen(false)} 
+              className={location.pathname === '/pricing' ? 'active' : ''} 
+              to="/pricing"
+            >
+              Pricing
+            </Link>
+          </li>
+          <li>
+            <Link 
+              onClick={() => setIsMenuOpen(false)} 
+              className={location.pathname === '/about' ? 'active' : ''} 
+              to="/about"
+            >
+              Community
+            </Link>
+          </li>
+          <li>
+            <Link 
+              onClick={() => setIsMenuOpen(false)} 
+              className={location.pathname === '/contact' ? 'active' : ''} 
+              to="/contact"
+            >
+              Contact
+            </Link>
+          </li>
         </ul>
         <div className="nav-actions">
-          <ThemeToggle />
+          <Link onClick={() => setIsMenuOpen(false)} className="login" to="/login">Login</Link>
           <Link onClick={() => setIsMenuOpen(false)} className="cta" to="/study">Start Free</Link>
         </div>
       </div>
