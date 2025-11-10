@@ -2,17 +2,18 @@
 
 .pricing-container {
   min-height: 100vh;
+  height: 100%;
   background: var(--bg);
   color: var(--text);
   padding: 0;
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /* Animated background effects */
 .pricing-container::before {
   content: '';
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 0;
   background: 

@@ -11,6 +11,7 @@ import { useEffect } from 'react'
 import Pricing from './pages/Pricing';
 import Contact from './pages/Contact';
 import StudyMode from './pages/StudyMode';
+import Community from './pages/Community';
 
 function AppContent() {
   const location = useLocation()
@@ -34,7 +35,7 @@ function AppContent() {
         <Route path="/signup" element={<Auth />} />
         <Route path="/study" element={<StudyMode />} />
         <Route path="/pricing" element={<Pricing />} />
-        <Route path="/about" element={<NotFound />} />
+        <Route path="/about" element={<Community />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
